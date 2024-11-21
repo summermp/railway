@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 from datos import dato
 app = Flask(__name__)
-app.config["DEBUG"] = True  # Modo debug habilitado
 
 @app.route('/')
 def index():
@@ -14,11 +13,6 @@ def acerca():
 @app.route('/region', methods=['GET'])
 def region():
     return render_template('/region.html')
-
-@app.route('/resultado', methods=['POST'])
-def resultado():
-    nombre = request.form['Nombre']
-    return render_template('/resultado.html', nombre=nombre)
 
 @app.route('/<region>', methods=['POST'])
 def show_region_page(region):
@@ -36,4 +30,4 @@ def show_region_page(region):
     return render_template('resultado.html', region=region.capitalize(), desastres=region_dato, total_muertos=total_muertos)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=5000, debug=True)
+    app.run(port=5000)
