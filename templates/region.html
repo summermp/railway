@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="alert alert-primary" role="alert">
+    Consulta los desastres naturales recientes por región
+</div>
+<form action="/redirect" method="post">
+    <div class="mb-3">
+        <label for="region" class="form-label">Seleccione la region</label>
+
+        <select name="region" id="region" class="form-select" aria-label="Default select example">
+            <option value="0" selected>Elija una opcion</option>
+            <option value="Arequipa">Arequipa</option>
+            <option value="Tumbes">Tumbes</option>
+            <option value="Lambayeque">Lambayeque</option>
+            <option value="Ancash">Ancash</option>
+            <option value="Cajamarca">Cajamarca</option>
+            <option value="Ayacucho">Ayacucho</option>
+            <option value="Ica">Ica</option>
+            <option value="Junin">Junin</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Consultar</button>
+</form>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+{% endblock %}
