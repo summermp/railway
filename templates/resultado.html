@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1></h1>
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    Desastres recientes en <strong>{{ region }}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% if desastres %}
+<div class="card-group mt-4 mb-4">
+    {% for desastre in desastres %}
+    <div class="card">
+        <img src="{{ url_for('static', filename=desastre.img) }}" class="card-img-top" alt="">
+        <div class="card-body">
+            <h5 class="card-title">{{ desastre.tipo }}</h5>
+            <p class="card-text">{{desastre.descripcion}}</p>
+            <p class="card-text"><span class="badge text-bg-light">{{desastre.ubicacion}}</span> <small class="text-body-secondary">{{desastre.fecha}}</small></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="alert alert-danger" role="alert">
+    <strong>Total de víctimas:</strong> {{ total_muertos }}
+</div>
+{% else %}
+<p>No hay desastres recientes registrados en esta región.</p>
+{% endif %}
+
+{% endblock %}
